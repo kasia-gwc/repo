@@ -1,31 +1,84 @@
+:root {
+  --midnight-green-eagle-green: #1a535cff;
+  --medium-turquoise: #10b2b2;
+  --bittersweet: #ff6b6bff;
+  --naples-yellow: #ffe66dff;
+  --dirty-white: #fbf3f3;
+  --border-radius: 5px;
+}
+* {
+  font-family: "Rajdhani", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body {
-    color: ;
-    background-color: ;
-    font-family: 'Hind Siliguri', sans-serif;
-    font-family: 'Roboto', sans-serif;
+  color: var(--dirty-white);
+  background-color: var(--medium-turquoise);
+  font-family: "Rajdhani", sans-serif;
 }
 .main-container {
-    position: absolute;
-    height: 10em;
-    align-items: center;
-    margin: auto;
-    top: 40%;
-    margin-right: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
+  max-width: 600px;
+  width: 100%;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 180px;
+  display: flex;
+  place-items: center;
+  place-content: center;
 }
-.main-container .card {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+h1 {
+  font-size: 45px;
+  margin-bottom: 40px;
 }
-@media(max-width: 992px) {
-    .card {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-@media(max-width: 768px) {
-    .card {
-      grid-template-columns: 1fr;
-    }
-  }
+.card {
+  background-color: var(--dirty-white);
+  border-radius: var(--border-radius);
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  padding: 5px;
+}
+.card > form > input {
+  border: none;
+  padding: 8px 16px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+}
+.card > form > input[type="text"] {
+  width: 100%;
+}
+.card > form > input:focus {
+  outline: none;
+}
+.card > form > input::placeholder {
+  font-weight: bold;
+}
+.card form {
+  align-items: center;
+  height: inherit;
+  display: flex;
+}
+.card > form > input[type="submit"] {
+    border-radius: var(--border-radius);
+  font-weight: bold;
+  margin-left: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#button-shorten {
+    background-color: var(--midnight-green-eagle-green);
+    color: white;
+}
+
+#button-copy {
+    color: var(--dirty-white);
+    background-color: var(--bittersweet);
+    padding-left: 31px;
+    padding-right: 31px;
+}
+#button-copied {
+    color: var(--bittersweet);
+    background-color: var(--naples-yellow);
+}

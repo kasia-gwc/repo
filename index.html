@@ -1,20 +1,39 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&family=Roboto&display=swap" rel="stylesheet">
-    <title>Shorten links with one click!</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <h1>Create shorter links</h1>
-      <div class="card">
-        <form-inline class="paste your link" id="long-link"></form>
-          <input type="text" placeholder="Type your link">
-          <input type="submit" value="Shorten it!">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <title>Shorten links with one click!</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <h1>Create shorter links</h1>
+    <div class="card">
+      <form id="long-link-form">
+        <input type="text" placeholder="Type your link">
+        <input type="submit" id="button-shorten" value="Shorten it">
+      </form>
       </div>
+      <br>
+      <br>
+      <div class="card">
+      <form id="short-link-form">
+        <input type="text" placeholder="shrtco.de/S2RynK">
+        <input type="submit" id="button-copy" value="Copy">
+      </form>
     </div>
-  </body>
+    <br>
+    <div class="card">
+      <form id="short-link-form">
+        <input type="text" placeholder="shrtco.de/S2RynK">
+        <input type="submit" id="button-copied" value="Copied">
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>

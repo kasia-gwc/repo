@@ -22,7 +22,7 @@ body {
   width: 100%;
   flex-direction: column;
   margin: auto;
-  margin-top: 180px;
+  margin-top: 150px;
   display: flex;
   place-items: center;
   place-content: center;
@@ -61,24 +61,36 @@ h1 {
   display: flex;
 }
 .card > form > input[type="submit"] {
-    border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
   font-weight: bold;
   margin-left: auto;
   padding-left: 25px;
   padding-right: 25px;
 }
 #button-shorten {
-    background-color: var(--midnight-green-eagle-green);
-    color: white;
+  background-color: var(--midnight-green-eagle-green);
+  color: white;
 }
 
 #button-copy {
-    color: var(--dirty-white);
-    background-color: var(--bittersweet);
-    padding-left: 31px;
-    padding-right: 31px;
+  color: var(--dirty-white);
+  background-color: var(--bittersweet);
+  padding-left: 31px;
+  padding-right: 31px;
 }
 #button-copied {
-    color: var(--bittersweet);
-    background-color: var(--naples-yellow);
+  color: var(--bittersweet);
+  background-color: var(--naples-yellow);
+}
+
+@media (max-width: 992px) {
+  .main-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,0 +1,31 @@
+body {
+    color: ;
+    background-color: ;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+.main-container {
+    position: absolute;
+    height: 10em;
+    align-items: center;
+    margin: auto;
+    top: 40%;
+    margin-right: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.main-container .card {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+@media(max-width: 992px) {
+    .card {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+@media(max-width: 768px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+  }

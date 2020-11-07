@@ -26,6 +26,8 @@ body {
   display: flex;
   place-items: center;
   place-content: center;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 h1 {
   font-size: 45px;
@@ -83,23 +85,6 @@ h1 {
   background-color: var(--naples-yellow);
 }
 
-input:required:valid {
-    border: none;
-}
-
-input:required:invalid {
+input:focus:invalid {
     border: 3px solid var(--bittersweet);
-}
-input:focus:invalid 
-
-@media (max-width: 992px) {
-  .main-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-container {
-    grid-template-columns: 1fr;
-  }
 }

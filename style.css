@@ -83,6 +83,15 @@ h1 {
   background-color: var(--naples-yellow);
 }
 
+input:required:valid {
+    border: none;
+}
+
+input:required:invalid {
+    border: 3px solid var(--bittersweet);
+}
+input:focus:invalid 
+
 @media (max-width: 992px) {
   .main-container {
     grid-template-columns: 1fr 1fr;

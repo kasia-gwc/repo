@@ -40,6 +40,10 @@ h1 {
   overflow: hidden;
   height: 100%;
   padding: 5px;
+  margin-bottom: 12px;
+}
+.card.main-form {
+  margin-bottom: 48px;
 }
 .card > form > input {
   border: none;

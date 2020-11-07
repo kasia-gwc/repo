@@ -10,6 +10,7 @@ Your challenge is to build out [this](https://www.figma.com/file/fsDB2i81Mp64WBU
   - The `input` field is empty
 
 
+
 ## Building your project
 
 1. Initialize your project as a public repository on [GitHub](https://github.com/).

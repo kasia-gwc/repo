@@ -10,3 +10,18 @@
  *  .catch(error => console.log(error))
  */
 
+const longLink = document.getElementById('long-link-form');
+longLink.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(event);
+
+    const url = event.target.link.value
+    const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(nic => {
+            console.log(nic.result.short_link)
+        })
+        .catch(error => console.log(error))
+});

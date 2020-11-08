@@ -9,19 +9,27 @@
  *  .then(response => console.log(response)) response will consist { ok, result }
  *  .catch(error => console.log(error))
  */
+const mainContainer = document.querySelector('.main-container')
+const longLink = document.getElementById('long-link-form')
 
-const longLink = document.getElementById('long-link-form');
 longLink.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log(event);
+  event.preventDefault()
+  console.log(event)
 
-    const url = event.target.link.value
-    const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
+  const url = event.target.link.value
+  const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
 
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(nic => {
-            console.log(nic.result.short_link)
-        })
-        .catch(error => console.log(error))
-});
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((nic) => {
+      const shortUrl = nic.result.short_link
+      mainContainer.dispatchEvent(
+        new CustomEvent('notify', { detail: shortUrl })
+      )
+    })
+    .catch((error) => console.log(error))
+})
+
+mainContainer.addEventListener('notify', (event) => {
+  console.log('notified triggered', event)
+})

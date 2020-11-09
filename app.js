@@ -9,26 +9,27 @@
  *  .then(response => console.log(response)) response will consist { ok, result }
  *  .catch(error => console.log(error))
  */
-createCard('asd')
 
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
 
 longLink.addEventListener('submit', (event) => {
-  event.preventDefault()
-  console.log(event)
+    event.preventDefault()
+    console.log(event)
 
-  const url = event.target.link.value
-  const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((nic) => {
-    })
-    .catch((error) => console.log(error))
+    const url = event.target.link.value
+    const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
+    fetch(apiUrl)
+        .then((response) => response.json())
+        .then((nic) => {
+           let short_link = nic.result.short_link
+            createCard(short_link)
+        })
+        .catch((error) => console.log(error))
 })
 
 mainContainer.addEventListener('notify', (event) => {
-  console.log('notified triggered', event)
+    console.log('notified triggered', event)
 })
 
 /* 
@@ -40,9 +41,29 @@ mainContainer.addEventListener('notify', (event) => {
   </div> 
 */
 
+function createCard(short_link) {
+    const cardElement = document.createElement('div')
+    cardElement.classList.add('card')
 
+    const formElement = document.createElement('form')
+    formElement.id = 'short-link-form'
+
+    const inputShortLink = document.createElement('input')
+    inputShortLink.value = short_link
+    inputShortLink.readOnly = true
+
+    const buttonElement = document.createElement('input')
+    buttonElement.type = 'submit'
+    buttonElement.classList.add('button-copy')
+    buttonElement.value = 'Copy'
+
+    formElement.appendChild(inputShortLink)
+    formElement.appendChild(buttonElement)
+    cardElement.appendChild(formElement)
+    document.getElementById('shorten-links-container').appendChild(cardElement)
+}
 /**
- * 0. Create a function first and pass a param then execute it after line 25 
+ * 0. Create a function first and pass a param then execute it after line 25
  * 1. Create an empty div using document.createElement('div') and give and add a class using classList.add('card') const cardElement
  * 2. Create a form in javascript using document.createElement('form') and give a id short-link-form e.g. const formElement
  * 3. Create an input element in js using document.createElement('input') and assign it to a constant e.g const inputShortLink =
@@ -65,4 +86,3 @@ mainContainer.addEventListener('notify', (event) => {
  *
  */
 
- 

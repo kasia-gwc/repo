@@ -7,7 +7,7 @@
   --border-radius: 5px;
 }
 * {
-  font-family: "Rajdhani", sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -15,7 +15,7 @@
 body {
   color: var(--dirty-white);
   background-color: var(--medium-turquoise);
-  font-family: "Rajdhani", sans-serif;
+  font-family: 'Rajdhani', sans-serif;
 }
 .main-container {
   max-width: 600px;
@@ -52,7 +52,7 @@ h1 {
   font-size: 16px;
   font-weight: bold;
 }
-.card > form > input[type="text"] {
+.card > form > input[type='text'] {
   width: 100%;
 }
 .card > form > input:focus {
@@ -66,29 +66,29 @@ h1 {
   height: inherit;
   display: flex;
 }
-.card > form > input[type="submit"] {
+.card form input[type='submit'] {
   border-radius: var(--border-radius);
   font-weight: bold;
   margin-left: auto;
   padding-left: 25px;
   padding-right: 25px;
 }
-#button-shorten {
+.card > form > input.button-shorten {
   background-color: var(--midnight-green-eagle-green);
   color: white;
 }
 
-#button-copy {
+.card > form > input.button-copy {
   color: var(--dirty-white);
   background-color: var(--bittersweet);
   padding-left: 31px;
   padding-right: 31px;
 }
-#button-copied {
+.card > form > input.button-copied {
   color: var(--bittersweet);
   background-color: var(--naples-yellow);
 }
 
 input:focus:invalid {
-    border: 3px solid var(--bittersweet);
+  border: 3px solid var(--bittersweet);
 }

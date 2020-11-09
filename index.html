@@ -26,23 +26,11 @@
             name="link"
             required
           />
-          <input type="submit" id="button-shorten" value="Shorten it" />
+          <input type="submit" class="button-shorten" value="Shorten it" />
         </form>
       </div>
-
-      <div class="card">
-        <form id="short-link-form">
-          <input type="text" placeholder="shrtco.de/S2RynK" />
-          <input type="submit" id="button-copy" value="Copy" />
-        </form>
-      </div>
-
-      <div class="card">
-        <form id="short-link-form">
-          <input type="text" placeholder="shrtco.de/S2RynK" />
-          <input type="submit" id="button-copied" value="Copied" />
-        </form>
-      </div>
+      <!-- dynamice links will be populated below -->
+      <div id="shorten-links-container"></div>
     </div>
     <script src="./app.js"></script>
   </body>

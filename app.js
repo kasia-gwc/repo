@@ -22,7 +22,7 @@ longLink.addEventListener('submit', (event) => {
     fetch(apiUrl)
         .then((response) => response.json())
         .then((nic) => {
-           let short_link = nic.result.short_link
+            let short_link = nic.result.short_link
             createCard(short_link)
         })
         .catch((error) => console.log(error))
@@ -56,6 +56,17 @@ function createCard(short_link) {
     buttonElement.type = 'submit'
     buttonElement.classList.add('button-copy')
     buttonElement.value = 'Copy'
+
+    buttonElement.addEventListener('click', event => {
+        event.preventDefault()
+        buttonElement.classList.toggle("button-copy")
+        buttonElement.classList.toggle("button-copied")
+        buttonElement.value = 'Copied'
+        inputShortLink.select()
+        document.execCommand("copy")
+        /* alert("Copied the link") */
+    }
+    )
 
     formElement.appendChild(inputShortLink)
     formElement.appendChild(buttonElement)

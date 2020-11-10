@@ -92,3 +92,26 @@ h1 {
 input:focus:invalid {
   border: 3px solid var(--bittersweet);
 }
+.success-alert {
+  color: var(--midnight-green-eagle-green);
+  background-color: #fbf3f3;
+  padding-left: 20px;
+  padding-right: 18px;
+  padding-top: 5px;
+  padding-bottom: 45px;
+  border-radius: var(--border-radius);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  position: relative;
+}
+.close {
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  margin-left: auto;
+  padding: 4px 14px;
+  color: var(--dirty-white);
+  background-color: var(--bittersweet);
+  border: none;
+  position: absolute;
+  bottom: 8px;
+  left: 40%;
+}

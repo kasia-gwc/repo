@@ -9,6 +9,7 @@
  *  .then(response => console.log(response)) response will consist { ok, result }
  *  .catch(error => console.log(error))
  */
+import swal from 'sweetalert';
 
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')

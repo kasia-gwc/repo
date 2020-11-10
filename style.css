@@ -54,9 +54,14 @@ h1 {
 }
 .card > form > input[type='text'] {
   width: 100%;
+  border-radius: var(--border-radius);
+  margin-right: 5px;
 }
 .card > form > input:focus {
   outline: none;
+}
+#shorten-links-container {
+  width: 100%;
 }
 .card > form > input::placeholder {
   font-weight: bold;

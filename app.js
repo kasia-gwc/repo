@@ -12,16 +12,18 @@
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
 const notificationContainer = document.querySelector('#notification-container')
+const spinner = document.querySelector('.spinner')
 
 longLink.addEventListener('submit', (event) => {
     event.preventDefault()
-    console.log(event)
 
+    spinner.style.display = 'flex'
     const url = event.target.link.value
     const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
     fetch(apiUrl).then((response) => {
         const json = response.json()
         json.then((data) => {
+            spinner.style.display = 'none'
             if (data.ok) {
                 // everything is good
                 let short_link = data.result.short_link
@@ -49,10 +51,10 @@ function createCard(short_link) {
     inputShortLink.value = short_link
     inputShortLink.readOnly = true
 
-    const buttonElement = document.createElement('input')
+    const buttonElement = document.createElement('button')
     buttonElement.type = 'submit'
     buttonElement.classList.add('button-copy')
-    buttonElement.value = 'Copy'
+    buttonElement.innerHTML = 'Copy'
 
     buttonElement.addEventListener('click', (event) => {
         event.preventDefault()

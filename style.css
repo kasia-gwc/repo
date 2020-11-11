@@ -52,6 +52,9 @@ h1 {
   font-size: 16px;
   font-weight: bold;
 }
+input[type='submit'], input[type='button'] {
+  cursor: pointer;
+}
 .card > form > input[type='text'] {
   width: 100%;
   border-radius: var(--border-radius);
@@ -103,25 +106,24 @@ input:focus:invalid {
 .success-alert {
   color: var(--midnight-green-eagle-green);
   background-color: #fbf3f3;
-  padding-left: 20px;
-  padding-right: 18px;
-  padding-top: 5px;
-  padding-bottom: 45px;
+  padding: 8px 12px;
   border-radius: var(--border-radius);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
   margin: 0 auto;
   position: fixed;
   top: 15px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
 }
 .close {
   border-radius: var(--border-radius);
   font-weight: bold;
-  margin-left: auto;
   padding: 4px 14px;
+  margin-top: 8px;
   color: var(--dirty-white);
   background-color: var(--bittersweet);
   border: none;
-  position: absolute;
-  bottom: 8px;
-  left: 45%;
 }

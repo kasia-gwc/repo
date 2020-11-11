@@ -26,9 +26,6 @@ longLink.addEventListener('submit', (event) => {
                 // everything is good
                 let short_link = data.result.short_link
                 // below line dispatches and creates an event at the same time.
-                notificationContainer.dispatchEvent(
-                new CustomEvent('notify', { detail: 'Succesful' })
-                )
                 createCard(short_link)
             } else {
                 let errorMessage = data.error
@@ -66,6 +63,9 @@ function createCard(short_link) {
             buttonElement.value = 'Copy'
         } else {
             buttonElement.value = 'Copied'
+            notificationContainer.dispatchEvent(
+                new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
+                )
         }
 
         inputShortLink.select()
@@ -146,6 +146,10 @@ function createNotification(message) {
     buttonElement.classList.add('close')
     buttonElement.type = 'button'
     buttonElement.value = 'OK'
+    buttonElement.addEventListener('click', event => {
+        //notificationContainer.style.display = 'none'
+        notificationContainer.innerHTML = ''
+    })
 
     notificationElement.appendChild(buttonElement)
     notificationElement.appendChild(strongElement)

@@ -63,6 +63,9 @@ h1 {
 #shorten-links-container {
   width: 100%;
 }
+#notification-container {
+  display: contents;
+}
 .card > form > input::placeholder {
   font-weight: bold;
 }
@@ -106,7 +109,9 @@ input:focus:invalid {
   padding-bottom: 45px;
   border-radius: var(--border-radius);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-  position: relative;
+  margin: 0 auto;
+  position: fixed;
+  top: 15px;
 }
 .close {
   border-radius: var(--border-radius);
@@ -118,5 +123,5 @@ input:focus:invalid {
   border: none;
   position: absolute;
   bottom: 8px;
-  left: 40%;
+  left: 45%;
 }

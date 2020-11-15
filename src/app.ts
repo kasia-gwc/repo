@@ -9,76 +9,80 @@
  *  .then(response => console.log(response)) response will consist { ok, result }
  *  .catch(error => console.log(error))
  */
+
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
 const notificationContainer = document.querySelector('#notification-container')
-const spinner = document.querySelector('.spinner')
+const spinner: any = document.querySelector('.spinner')
 
-longLink.addEventListener('submit', (event) => {
+if (longLink) {
+  longLink.addEventListener('submit', (event: any) => {
     event.preventDefault()
 
     spinner.style.display = 'flex'
+
     const url = event.target.link.value
     const apiUrl = `https://api.shrtco.de/v2/shorten?url=${url}`
     fetch(apiUrl).then((response) => {
-        const json = response.json()
-        json.then((data) => {
-            spinner.style.display = 'none'
-            if (data.ok) {
-                // everything is good
-                let short_link = data.result.short_link
-                // below line dispatches and creates an event at the same time.
-                createCard(short_link)
-            } else {
-                let errorMessage = data.error
-                // below line dispatches and creates an event at the same time. It can be done in one instruction or split it in to two
-                notificationContainer.dispatchEvent(
-                    new CustomEvent('notify', { detail: errorMessage })
-                )
-            }
-        })
-    })
-})
-
-function createCard(short_link) {
-    const cardElement = document.createElement('div')
-    cardElement.classList.add('card')
-
-    const formElement = document.createElement('form')
-    formElement.id = 'short-link-form'
-
-    const inputShortLink = document.createElement('input')
-    inputShortLink.value = short_link
-    inputShortLink.readOnly = true
-
-    const buttonElement = document.createElement('button')
-    buttonElement.type = 'submit'
-    buttonElement.classList.add('button-copy')
-    buttonElement.innerHTML = 'Copy'
-
-    buttonElement.addEventListener('click', (event) => {
-        event.preventDefault()
-        buttonElement.classList.toggle('button-copy')
-        buttonElement.classList.toggle('button-copied')
-
-        if (buttonElement.classList.contains('button-copy')) {
-            buttonElement.value = 'Copy'
+      const json = response.json()
+      json.then((data) => {
+        spinner.style.display = 'none'
+        if (data.ok) {
+          // everything is good
+          let short_link = data.result.short_link
+          // below line dispatches and creates an event at the same time.
+          createCard(short_link)
         } else {
-            buttonElement.value = 'Copied'
-            notificationContainer.dispatchEvent(
-                new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
-                )
+          let errorMessage = data.error
+          // below line dispatches and creates an event at the same time. It can be done in one instruction or split it in to two
+          notificationContainer?.dispatchEvent(
+            new CustomEvent('notify', { detail: errorMessage })
+          )
         }
-
-        inputShortLink.select()
-        document.execCommand('copy')
-        /* alert("Copied the link") */
+      })
     })
+  })
+}
 
-    formElement.appendChild(inputShortLink)
-    formElement.appendChild(buttonElement)
-    cardElement.appendChild(formElement)
-    document.getElementById('shorten-links-container').appendChild(cardElement)
+function createCard(short_link: string) {
+  const cardElement = document.createElement('div')
+  cardElement.classList.add('card')
+
+  const formElement = document.createElement('form')
+  formElement.id = 'short-link-form'
+
+  const inputShortLink = document.createElement('input')
+  inputShortLink.value = short_link
+  inputShortLink.readOnly = true
+
+  const buttonElement = document.createElement('button')
+  buttonElement.type = 'submit'
+  buttonElement.classList.add('button-copy')
+  buttonElement.innerHTML = 'Copy'
+
+  buttonElement.addEventListener('click', (event) => {
+    event.preventDefault()
+    buttonElement.classList.toggle('button-copy')
+    buttonElement.classList.toggle('button-copied')
+
+    if (buttonElement.classList.contains('button-copy')) {
+      buttonElement.value = 'Copy'
+    } else {
+      buttonElement.value = 'Copied'
+      notificationContainer?.dispatchEvent(
+        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
+      )
+    }
+
+    inputShortLink.select()
+    document.execCommand('copy')
+    /* alert("Copied the link") */
+  })
+
+  formElement.appendChild(inputShortLink)
+  formElement.appendChild(buttonElement)
+  cardElement.appendChild(formElement)
+  document?.getElementById('shorten-links-container')?.appendChild(cardElement)
 }
 /**
  * 0. Create a function first and pass a param then execute it after line 25
@@ -105,7 +109,7 @@ function createCard(short_link) {
  */
 
 {
-    /* Notification html example
+  /* Notification html example
     <div class="success-alert">
       <strong>Link successfully copied! 🎊</strong>
       <input type="button" class="close" data-dismiss="alert" value="OK" />
@@ -134,26 +138,26 @@ function createCard(short_link) {
  *
  */
 notificationContainer.addEventListener('notify', (event) => {
-    console.log(event.detail)
-    createNotification(event.detail)
+  console.log(event.detail)
+  createNotification(event.detail)
 })
 function createNotification(message) {
-    const notificationElement = document.createElement('div')
-    notificationElement.classList.add('success-alert')
+  const notificationElement = document.createElement('div')
+  notificationElement.classList.add('success-alert')
 
-    const strongElement = document.createElement('strong')
-    strongElement.innerHTML = `${message}`
+  const strongElement = document.createElement('strong')
+  strongElement.innerHTML = `${message}`
 
-    const buttonElement = document.createElement('input')
-    buttonElement.classList.add('close')
-    buttonElement.type = 'button'
-    buttonElement.value = 'OK'
-    buttonElement.addEventListener('click', event => {
-        //notificationContainer.style.display = 'none'
-        notificationContainer.innerHTML = ''
-    })
+  const buttonElement = document.createElement('input')
+  buttonElement.classList.add('close')
+  buttonElement.type = 'button'
+  buttonElement.value = 'OK'
+  buttonElement.addEventListener('click', (event) => {
+    //notificationContainer.style.display = 'none'
+    notificationContainer.innerHTML = ''
+  })
 
-    notificationElement.appendChild(buttonElement)
-    notificationElement.appendChild(strongElement)
-    notificationContainer.appendChild(notificationElement)
+  notificationElement.appendChild(buttonElement)
+  notificationElement.appendChild(strongElement)
+  notificationContainer.appendChild(notificationElement)
 }

@@ -59,7 +59,7 @@ def concat_arrays(apples, oranges)
   smallest_array = apples.length < oranges.length ? apples : oranges
   smallest_array.each_with_index do |value, index| 
     basket.push(value) 
-    basket.push(oranges[index]) # basket += [value, oranges[index]] || basket.push(value, oranges[index]) 
+    basket.push(oranges[index]) # or: basket += [value, oranges[index]] || basket.push(value, oranges[index]) 
   end
   return basket
 end

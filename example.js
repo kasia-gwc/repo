@@ -45,3 +45,4 @@ const car = {
 }
 car.year = 2020
 car.running()
+car.models.push('SX10')

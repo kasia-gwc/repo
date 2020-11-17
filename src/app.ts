@@ -12,7 +12,7 @@
 
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
-const notificationContainer = document.querySelector('#notification-container')
+const notificationContainer: Element | null  = document.querySelector('#notification-container')
 const spinner: any = document.querySelector('.spinner')
 
 if (longLink) {
@@ -70,7 +70,7 @@ function createCard(short_link: string) {
     } else {
       buttonElement.value = 'Copied'
       notificationContainer?.dispatchEvent(
-        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
+      new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
       )
     }
 
@@ -137,11 +137,11 @@ function createCard(short_link: string) {
  * 9. notificationContainer.appendChild(notificationElement)
  *
  */
-notificationContainer.addEventListener('notify', (event) => {
+notificationContainer?.addEventListener('notify', (event) => {
   console.log(event.detail)
   createNotification(event.detail)
 })
-function createNotification(message) {
+function createNotification(message: any) {
   const notificationElement = document.createElement('div')
   notificationElement.classList.add('success-alert')
 
@@ -154,10 +154,10 @@ function createNotification(message) {
   buttonElement.value = 'OK'
   buttonElement.addEventListener('click', (event) => {
     //notificationContainer.style.display = 'none'
-    notificationContainer.innerHTML = ''
+    notificationContainer!.innerHTML = ''
   })
 
   notificationElement.appendChild(buttonElement)
   notificationElement.appendChild(strongElement)
-  notificationContainer.appendChild(notificationElement)
+  notificationContainer?.appendChild(notificationElement)
 }

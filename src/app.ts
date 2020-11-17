@@ -12,8 +12,10 @@
 
 const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
-const notificationContainer: Element | null  = document.querySelector('#notification-container')
-const spinner: any = document.querySelector('.spinner')
+const notificationContainer: Element | null = document.querySelector(
+  '#notification-container'
+)
+const spinner = document.querySelector('.spinner')
 
 if (longLink) {
   longLink.addEventListener('submit', (event: any) => {
@@ -69,8 +71,8 @@ function createCard(short_link: string) {
       buttonElement.value = 'Copy'
     } else {
       buttonElement.value = 'Copied'
-      notificationContainer?.dispatchEvent(
-      new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
+      notificationContainer.dispatchEvent(
+        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
       )
     }
 
@@ -137,7 +139,7 @@ function createCard(short_link: string) {
  * 9. notificationContainer.appendChild(notificationElement)
  *
  */
-notificationContainer?.addEventListener('notify', (event) => {
+notificationContainer.addEventListener('notify', (event: any) => {
   console.log(event.detail)
   createNotification(event.detail)
 })
@@ -153,7 +155,7 @@ function createNotification(message: any) {
   buttonElement.type = 'button'
   buttonElement.value = 'OK'
   buttonElement.addEventListener('click', (event) => {
-    //notificationContainer.style.display = 'none'
+    // notificationContainer.style.display = 'none'
     notificationContainer!.innerHTML = ''
   })
 

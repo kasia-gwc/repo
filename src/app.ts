@@ -15,7 +15,8 @@ const longLink = document.getElementById('long-link-form')
 const notificationContainer: Element | null = document.querySelector(
   '#notification-container'
 )
-const spinner = document.querySelector('.spinner')
+const spinner: any = document.querySelector('.spinner')
+const shortenLinksContainer: Element | null = document.getElementById('shorten-links-container')
 
 if (longLink) {
   longLink.addEventListener('submit', (event: any) => {
@@ -71,8 +72,8 @@ function createCard(short_link: string) {
       buttonElement.value = 'Copy'
     } else {
       buttonElement.value = 'Copied'
-      notificationContainer.dispatchEvent(
-        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' })
+      notificationContainer!.dispatchEvent(
+        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' }) as any
       )
     }
 
@@ -84,7 +85,7 @@ function createCard(short_link: string) {
   formElement.appendChild(inputShortLink)
   formElement.appendChild(buttonElement)
   cardElement.appendChild(formElement)
-  document?.getElementById('shorten-links-container')?.appendChild(cardElement)
+  shortenLinksContainer!.appendChild(cardElement)
 }
 /**
  * 0. Create a function first and pass a param then execute it after line 25
@@ -139,7 +140,7 @@ function createCard(short_link: string) {
  * 9. notificationContainer.appendChild(notificationElement)
  *
  */
-notificationContainer.addEventListener('notify', (event: any) => {
+notificationContainer!.addEventListener('notify', (event: any) => {
   console.log(event.detail)
   createNotification(event.detail)
 })
@@ -161,5 +162,5 @@ function createNotification(message: any) {
 
   notificationElement.appendChild(buttonElement)
   notificationElement.appendChild(strongElement)
-  notificationContainer?.appendChild(notificationElement)
+  notificationContainer!.appendChild(notificationElement)
 }

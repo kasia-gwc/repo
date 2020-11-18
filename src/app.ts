@@ -15,13 +15,12 @@ const longLink = document.getElementById('long-link-form')
 const notificationContainer: Element | null = document.querySelector(
   '#notification-container'
 )
-const spinner: any = document.querySelector('.spinner')
+const spinner: HTMLElement = document.querySelector('.spinner') as HTMLElement
 const shortenLinksContainer: Element | null = document.getElementById('shorten-links-container')
 
 if (longLink) {
   longLink.addEventListener('submit', (event: any) => {
     event.preventDefault()
-
     spinner.style.display = 'flex'
 
     const url = event.target.link.value
@@ -144,7 +143,7 @@ notificationContainer!.addEventListener('notify', (event: any) => {
   console.log(event.detail)
   createNotification(event.detail)
 })
-function createNotification(message: any) {
+function createNotification(message: string) {
   const notificationElement = document.createElement('div')
   notificationElement.classList.add('success-alert')
 

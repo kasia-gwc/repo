@@ -12,9 +12,12 @@
 
 const longLink = document.getElementById('long-link-form')
 const notificationContainer: HTMLDivElement = document.querySelector(
-  '#notification-container') as HTMLDivElement
+  '#notification-container'
+) as HTMLDivElement
 const spinner: HTMLElement = document.querySelector('.spinner') as HTMLElement
-const shortenLinksContainer: HTMLDivElement = document.getElementById('shorten-links-container') as HTMLDivElement
+const shortenLinksContainer: HTMLDivElement = document.getElementById(
+  'shorten-links-container'
+) as HTMLDivElement
 
 if (longLink) {
   longLink.addEventListener('submit', (event: any) => {
@@ -29,7 +32,7 @@ if (longLink) {
         spinner.style.display = 'none'
         if (data.ok) {
           // everything is good
-          const shortLink = data.result.shortLink
+          const shortLink = data.result.short_link
           // below line dispatches and creates an event at the same time.
           createCard(shortLink)
         } else {
@@ -70,7 +73,9 @@ function createCard(shortLink: string) {
     } else {
       buttonElement.value = 'Copied'
       notificationContainer.dispatchEvent(
-        new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' }) as any
+        new CustomEvent('notify', {
+          detail: 'Link successfully copied! 🎊'
+        }) as any
       )
     }
 

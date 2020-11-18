@@ -10,13 +10,11 @@
  *  .catch(error => console.log(error))
  */
 
-const mainContainer = document.querySelector('.main-container')
 const longLink = document.getElementById('long-link-form')
-const notificationContainer: Element | null = document.querySelector(
-  '#notification-container'
-)
+const notificationContainer: HTMLDivElement = document.querySelector(
+  '#notification-container') as HTMLDivElement
 const spinner: HTMLElement = document.querySelector('.spinner') as HTMLElement
-const shortenLinksContainer: Element | null = document.getElementById('shorten-links-container')
+const shortenLinksContainer: HTMLDivElement = document.getElementById('shorten-links-container') as HTMLDivElement
 
 if (longLink) {
   longLink.addEventListener('submit', (event: any) => {
@@ -31,13 +29,13 @@ if (longLink) {
         spinner.style.display = 'none'
         if (data.ok) {
           // everything is good
-          let short_link = data.result.short_link
+          const shortLink = data.result.shortLink
           // below line dispatches and creates an event at the same time.
-          createCard(short_link)
+          createCard(shortLink)
         } else {
-          let errorMessage = data.error
+          const errorMessage = data.error
           // below line dispatches and creates an event at the same time. It can be done in one instruction or split it in to two
-          notificationContainer?.dispatchEvent(
+          notificationContainer.dispatchEvent(
             new CustomEvent('notify', { detail: errorMessage })
           )
         }
@@ -46,7 +44,7 @@ if (longLink) {
   })
 }
 
-function createCard(short_link: string) {
+function createCard(shortLink: string) {
   const cardElement = document.createElement('div')
   cardElement.classList.add('card')
 
@@ -54,7 +52,7 @@ function createCard(short_link: string) {
   formElement.id = 'short-link-form'
 
   const inputShortLink = document.createElement('input')
-  inputShortLink.value = short_link
+  inputShortLink.value = shortLink
   inputShortLink.readOnly = true
 
   const buttonElement = document.createElement('button')
@@ -71,7 +69,7 @@ function createCard(short_link: string) {
       buttonElement.value = 'Copy'
     } else {
       buttonElement.value = 'Copied'
-      notificationContainer!.dispatchEvent(
+      notificationContainer.dispatchEvent(
         new CustomEvent('notify', { detail: 'Link successfully copied! 🎊' }) as any
       )
     }
@@ -84,7 +82,7 @@ function createCard(short_link: string) {
   formElement.appendChild(inputShortLink)
   formElement.appendChild(buttonElement)
   cardElement.appendChild(formElement)
-  shortenLinksContainer!.appendChild(cardElement)
+  shortenLinksContainer.appendChild(cardElement)
 }
 /**
  * 0. Create a function first and pass a param then execute it after line 25
@@ -110,14 +108,12 @@ function createCard(short_link: string) {
  *
  */
 
-{
-  /* Notification html example
+/* Notification html example
     <div class="success-alert">
       <strong>Link successfully copied! 🎊</strong>
       <input type="button" class="close" data-dismiss="alert" value="OK" />
-    </div> 
+    </div>
   */
-}
 
 /**
  * Displaying notifications
@@ -139,7 +135,8 @@ function createCard(short_link: string) {
  * 9. notificationContainer.appendChild(notificationElement)
  *
  */
-notificationContainer!.addEventListener('notify', (event: any) => {
+
+notificationContainer.addEventListener('notify', (event: any) => {
   console.log(event.detail)
   createNotification(event.detail)
 })
@@ -156,10 +153,10 @@ function createNotification(message: string) {
   buttonElement.value = 'OK'
   buttonElement.addEventListener('click', (event) => {
     // notificationContainer.style.display = 'none'
-    notificationContainer!.innerHTML = ''
+    notificationContainer.innerHTML = ''
   })
 
   notificationElement.appendChild(buttonElement)
   notificationElement.appendChild(strongElement)
-  notificationContainer!.appendChild(notificationElement)
+  notificationContainer.appendChild(notificationElement)
 }

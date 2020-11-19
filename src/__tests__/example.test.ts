@@ -1,4 +1,4 @@
-import multiply, { printLastName, printMyName } from '../example'
+import multiply, { oddOrEven, printLastName, printMyName } from '../example'
 
 describe('example file', () => {
   describe('multiply function', () => {
@@ -27,6 +27,16 @@ describe('example file', () => {
     })
     test('should return a friendly message when array is empty', () => {
       expect(printLastName([])).toEqual('Please provide names!')
+    })
+  })
+  describe('oddOrEven function', () => {
+    test('should iterate 15 times and return 3 evens and 3 odds', () => {
+      const results = oddOrEven(15)
+      expect(results.threeAndFive).toEqual(1)
+    })
+    test('should iterate 15 times and return 3 evens and 3 odds', () => {
+      const results = oddOrEven(15)
+      expect(results.fourAndSix).toEqual(1)
     })
   })
 })

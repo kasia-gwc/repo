@@ -36,4 +36,18 @@ export const oddOrEven = (times: number): { threeAndFive: number; fourAndSix: nu
   return { threeAndFive, fourAndSix }
 }
 
+export const isPalindrome = (sentence: string): string[] => {
+  const palindromes: string[] = []
+  const words = sentence.split(' ') || []
+  words.forEach(word => {
+    const reversed: string = word.split('').reverse().join('')
+    if (word.toLowerCase() === reversed.toLowerCase() && word.length > 2) {
+      palindromes.push(word)
+    }
+  })
+  return palindromes
+}
+const pal = isPalindrome('my name is Anna and I have got a Civic')
+console.log(pal)
+
 export default multiply

@@ -1,4 +1,4 @@
-import multiply, { oddOrEven, printLastName, printMyName } from '../example'
+import multiply, { isPalindrome, oddOrEven, printLastName, printMyName } from '../example'
 
 describe('example file', () => {
   describe('multiply function', () => {
@@ -37,6 +37,12 @@ describe('example file', () => {
     test('should iterate 15 times and return 3 evens and 3 odds', () => {
       const results = oddOrEven(15)
       expect(results.fourAndSix).toEqual(1)
+    })
+  })
+
+  describe('isPalindrome function', () => {
+    test('should iterate through a sentence and find palindromes and store it in an array and return it', () => {
+      expect(isPalindrome('my name is Anna and I have got a Civic')).toEqual(['Anna', 'Civic'])
     })
   })
 })
